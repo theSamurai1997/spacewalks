@@ -4,7 +4,6 @@ import datetime as dt
 import matplotlib.pyplot as plt
 import pandas as pd
 import sys
-import os
 import re
 
 def main(input_file, output_file, graph_file):
@@ -38,6 +37,7 @@ def read_json_to_dataframe(input_file):
     eva_df.sort_values('date', inplace=True)
     return eva_df
 
+
 def calculate_crew_size(crew):
     """
     Calculate the size of the crew for a single crew entry
@@ -70,6 +70,7 @@ def add_crew_size_column(df):
         calculate_crew_size
     )
     return df_copy
+
 
 def write_dataframe_to_csv(df, output_file):
     """
@@ -147,8 +148,8 @@ def plot_cumulative_time_in_space(df, graph_file):
 if __name__ == "__main__":
 
     if len(sys.argv) < 3:
-        input_file = os.path.join('data', 'eva-data.json')
-        output_file = os.path.join('data', 'eva-data.csv')
+        input_file = './data/eva-data.json'
+        output_file = './results/eva-data.csv'
         print(f'Using default input and output filenames')
     else:
         input_file = sys.argv[1]
